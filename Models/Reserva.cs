@@ -15,16 +15,15 @@ namespace DesafioProjetoHospedagem.Models
 
         public void CadastrarHospedes(List<Pessoa> hospedes)
         {
-            // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
-            // *IMPLEMENTE AQUI*
-            if (true)
+            // *IMPLEMENTADO*
+            if (hospedes.Count <= Suite.Capacidade)
             {
                 Hospedes = hospedes;
             }
             else
             {
-                // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
-                // *IMPLEMENTE AQUI*
+                // *IMPLEMENTADO*
+                Console.WriteLine($"O valor atual ultrapassa o numero máximo de hóspedes. O numero máximo de hóspedes atualmente são(é): {Suite.Capacidade}hospede(s).");
             }
         }
 
@@ -35,9 +34,10 @@ namespace DesafioProjetoHospedagem.Models
 
         public int ObterQuantidadeHospedes()
         {
-            // TODO: Retorna a quantidade de hóspedes (propriedade Hospedes)
-            // *IMPLEMENTE AQUI*
-            return 0;
+            // *IMPLEMENTADO*
+            int quantidadeDeHospedes = Hospedes.Count;
+ 
+            return quantidadeDeHospedes;
         }
 
         public decimal CalcularValorDiaria()
@@ -45,13 +45,17 @@ namespace DesafioProjetoHospedagem.Models
             // TODO: Retorna o valor da diária
             // Cálculo: DiasReservados X Suite.ValorDiaria
             // *IMPLEMENTE AQUI*
-            decimal valor = 0;
+            int dias = DiasReservados;
+            decimal valor = Suite.ValorDiaria;
+            decimal valorTotal = valor * dias;
 
             // Regra: Caso os dias reservados forem maior ou igual a 10, conceder um desconto de 10%
             // *IMPLEMENTE AQUI*
-            if (true)
+            if (dias >= 10)
             {
-                valor = 0;
+                valor = valor - valor/100*10;
+                valorTotal = valor * dias;
+                Console.WriteLine($"Valor total: {valorTotal}");
             }
 
             return valor;
